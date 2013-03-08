@@ -1,0 +1,35 @@
+<h1>Listing lesson_learneds</h1>
+
+<table>
+  <tr>
+    <th>Lessondate</th>
+    <th>Projectreference</th>
+    <th>Projectengineer</th>
+    <th>Projectarchitect</th>
+    <th>Projectowner</th>
+    <th>Division</th>
+    <th>Input</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @lesson_learneds.each do |lesson_learned| %>
+  <tr>
+    <td><%= lesson_learned.lessonDate %></td>
+    <td><%= lesson_learned.projectReference %></td>
+    <td><%= lesson_learned.projectEngineer %></td>
+    <td><%= lesson_learned.projectArchitect %></td>
+    <td><%= lesson_learned.projectOwner %></td>
+    <td><%= lesson_learned.division %></td>
+    <td><%= lesson_learned.input %></td>
+    <td><%= link_to 'Show', lesson_learned %></td>
+    <td><%= link_to 'Edit', edit_lesson_learned_path(lesson_learned) %></td>
+    <td><%= link_to 'Destroy', lesson_learned, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Lesson learned', new_lesson_learned_path %>

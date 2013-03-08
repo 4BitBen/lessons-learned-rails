@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Lessondate:</b>
+  <%= @lesson_learned.lessonDate %>
+</p>
+
+<p>
+  <b>Projectreference:</b>
+  <%= @lesson_learned.projectReference %>
+</p>
+
+<p>
+  <b>Projectengineer:</b>
+  <%= @lesson_learned.projectEngineer %>
+</p>
+
+<p>
+  <b>Projectarchitect:</b>
+  <%= @lesson_learned.projectArchitect %>
+</p>
+
+<p>
+  <b>Projectowner:</b>
+  <%= @lesson_learned.projectOwner %>
+</p>
+
+<p>
+  <b>Division:</b>
+  <%= @lesson_learned.division %>
+</p>
+
+<p>
+  <b>Input:</b>
+  <%= @lesson_learned.input %>
+</p>
+
+
+<%= link_to 'Edit', edit_lesson_learned_path(@lesson_learned) %> |
+<%= link_to 'Back', lesson_learneds_path %>

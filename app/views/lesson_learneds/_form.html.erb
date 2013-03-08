@@ -1,0 +1,45 @@
+<%= form_for(@lesson_learned) do |f| %>
+  <% if @lesson_learned.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lesson_learned.errors.count, "error") %> prohibited this lesson_learned from being saved:</h2>
+
+      <ul>
+      <% @lesson_learned.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :lessonDate %><br />
+    <%= f.date_select :lessonDate %>
+  </div>
+  <div class="field">
+    <%= f.label :projectReference %><br />
+    <%= f.text_field :projectReference %>
+  </div>
+  <div class="field">
+    <%= f.label :projectEngineer %><br />
+    <%= f.text_field :projectEngineer %>
+  </div>
+  <div class="field">
+    <%= f.label :projectArchitect %><br />
+    <%= f.text_field :projectArchitect %>
+  </div>
+  <div class="field">
+    <%= f.label :projectOwner %><br />
+    <%= f.text_field :projectOwner %>
+  </div>
+  <div class="field">
+    <%= f.label :division %><br />
+    <%= f.text_field :division %>
+  </div>
+  <div class="field">
+    <%= f.label :input %><br />
+    <%= f.text_area :input %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

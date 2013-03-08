@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  lessonDate: 2013-03-08
+  projectReference: MyString
+  projectEngineer: MyString
+  projectArchitect: MyString
+  projectOwner: MyString
+  division: MyString
+  input: MyText
+
+two:
+  lessonDate: 2013-03-08
+  projectReference: MyString
+  projectEngineer: MyString
+  projectArchitect: MyString
+  projectOwner: MyString
+  division: MyString
+  input: MyText
