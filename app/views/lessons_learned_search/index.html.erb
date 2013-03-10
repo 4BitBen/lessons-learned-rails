@@ -1,0 +1,31 @@
+<h1>Search Results</h1>
+
+<table>
+    <tr>
+        <th>Lesson Date</th>
+        <th>Project Reference</th>
+        <th>Project Engineer</th>
+        <th>Project Architect</th>
+        <th>Project Owner</th>
+        <th>Division</th>
+        <th>Input</th>
+        <th></th>
+    </tr>
+
+    <% @lessons_learned_search['response']['docs'].each do |lesson_learned| %>
+        <tr>
+            <td><%= lesson_learned['lesson_date'][0..9] %></td>
+            <td><%= lesson_learned['project_reference'] %></td>
+            <td><%= lesson_learned['project_engineer'] %></td>
+            <td><%= lesson_learned['project_architect'] %></td>
+            <td><%= lesson_learned['project_owner'] %></td>
+            <td><%= lesson_learned['division'] %></td>
+            <td><%= @lessons_learned_search['highlighting'][lesson_learned['id']]['text'][0].html_safe %></td>
+            <td><a href="/lesson_learneds/<%= lesson_learned['id']%>">Show</a></td>
+        </tr>
+    <% end %>
+</table>
+
+<br/>
+
+<%= link_to 'Home', root_path %>

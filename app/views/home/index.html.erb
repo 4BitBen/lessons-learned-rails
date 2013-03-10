@@ -1,3 +1,4 @@
 <h1>Welcome to the wonderful world of learning!</h1>
-<%= link_to "Create a new Lesson Learned", new_lesson_learned_path %>
-<%= link_to "Find a Lesson Learned", new_lesson_learned_path %>
+<form action="/lessons_learned_search">
+    <input name="search"/><button type="submit">Submit</button>
+</form><%= link_to "Create a new Lesson Learned", new_lesson_learned_path %>

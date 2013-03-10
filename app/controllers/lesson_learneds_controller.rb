@@ -44,6 +44,19 @@ class LessonLearnedsController < ApplicationController
 
     respond_to do |format|
       if @lesson_learned.save
+
+        # Now index it in Solr
+        rsolr = RSolr.connect :url => 'http://localhost:8983/solr/collection1'
+        rsolr.add(:id=>@lesson_learned.id,
+                  :lesson_date=>@lesson_learned.lessonDate.to_s + 'T00:00:00Z',
+                  :project_reference=>@lesson_learned.projectReference,
+                  :project_engineer=>@lesson_learned.projectEngineer,
+                  :project_architect=>@lesson_learned.projectArchitect,
+                  :project_owner=>@lesson_learned.projectOwner,
+                  :division=>@lesson_learned.division,
+                  :text=>@lesson_learned.input)
+        rsolr.commit
+
         format.html { redirect_to @lesson_learned, notice: 'Lesson learned was successfully created.' }
         format.json { render json: @lesson_learned, status: :created, location: @lesson_learned }
       else
@@ -60,6 +73,18 @@ class LessonLearnedsController < ApplicationController
 
     respond_to do |format|
       if @lesson_learned.update_attributes(params[:lesson_learned])
+        # Now index it in Solr
+        rsolr = RSolr.connect :url => 'http://localhost:8983/solr/collection1'
+        rsolr.add(:id=>@lesson_learned.id,
+                  :lesson_date=>@lesson_learned.lessonDate.to_s + 'T00:00:00Z',
+                  :project_reference=>@lesson_learned.projectReference,
+                  :project_engineer=>@lesson_learned.projectEngineer,
+                  :project_architect=>@lesson_learned.projectArchitect,
+                  :project_owner=>@lesson_learned.projectOwner,
+                  :division=>@lesson_learned.division,
+                  :text=>@lesson_learned.input)
+        rsolr.commit
+
         format.html { redirect_to @lesson_learned, notice: 'Lesson learned was successfully updated.' }
         format.json { head :no_content }
       else
@@ -74,6 +99,11 @@ class LessonLearnedsController < ApplicationController
   def destroy
     @lesson_learned = LessonLearned.find(params[:id])
     @lesson_learned.destroy
+
+    # Now remove it from Solr
+    rsolr = RSolr.connect :url => 'http://localhost:8983/solr/collection1'
+    rsolr.delete_by_id(@lesson_learned.id)
+    rsolr.commit
 
     respond_to do |format|
       format.html { redirect_to lesson_learneds_url }

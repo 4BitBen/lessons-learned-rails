@@ -1,7 +1,7 @@
 Blog::Application.routes.draw do
   resources :lesson_learneds
 
-  resources :posts
+  resources :lessons_learned_search
 
   get "home/index"
 
